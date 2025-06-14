@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Modern portfolio website showcasing creative projects and technical expertise" />
+    <meta name="keywords" content="portfolio, web developer, designer, creative, projects" />
+    <meta property="og:title" content="Sanjana Panda - Full-Stack Developer & ML Enthusiast" />
+    <meta property="og:description" content="Innovative web developer and designer creating exceptional digital experiences" />
+    <title>Sanjana Panda - Full-Stack Developer & ML Enthusiast</title>
+    
+    <!-- Vanta.js Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/three.r134.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #6366f1 #1f2937;
+        cursor: none;
+      }
+      *::-webkit-scrollbar {
+        width: 6px;
+      }
+      *::-webkit-scrollbar-track {
+        background: #1f2937;
+      }
+      *::-webkit-scrollbar-thumb {
+        background: #6366f1;
+        border-radius: 3px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Custom Cursor */
+      .cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        mix-blend-mode: difference;
+        transition: transform 0.1s ease;
+      }
+      
+      .cursor-trail {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: rgba(139, 92, 246, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+      }
+      
+      .cursor.hover {
+        transform: scale(1.5);
+        background: linear-gradient(45deg, #a855f7, #0891b2);
+      }
+      
+      .cursor.click {
+        transform: scale(0.8);
+      }
+      
+      /* Mobile cursor disable */
+      @media (max-width: 768px) {
+        * {
+          cursor: auto !important;
+        }
+        .cursor,
+        .cursor-trail {
+          display: none !important;
+        }
+      }
+      
+      /* Vanta.js container styles */
+      .vanta-canvas {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Custom cursor implementation
+      document.addEventListener('DOMContentLoaded', function() {
+        const cursor = document.querySelector('.cursor');
+        const cursorTrail = document.querySelector('.cursor-trail');
+        let mouseX = 0;
+        let mouseY = 0;
+        let trailX = 0;
+        let trailY = 0;
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          
+          cursor.style.left = mouseX - 10 + 'px';
+          cursor.style.top = mouseY - 10 + 'px';
+        });
+        
+        // Animate trail
+        function animateTrail() {
+          trailX += (mouseX - trailX) * 0.1;
+          trailY += (mouseY - trailY) * 0.1;
+          
+          cursorTrail.style.left = trailX - 4 + 'px';
+          cursorTrail.style.top = trailY - 4 + 'px';
+          
+          requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+        
+        // Hover effects
+        const hoverElements = document.querySelectorAll('a, button, [role="button"]');
+        hoverElements.forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        // Click effects
+        document.addEventListener('mousedown', () => cursor.classList.add('click'));
+        document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+        
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+          cursor.style.opacity = '0';
+          cursorTrail.style.opacity = '0';
+        });
+        
+        document.addEventListener('mouseenter', () => {
+          cursor.style.opacity = '1';
+          cursorTrail.style.opacity = '1';
+        });
+      });
+    </script>
+  </body>
+</html>
