@@ -19,7 +19,7 @@ const EducationExperience: React.FC = () => {
       id: 'mca',
       title: 'Master of Computer Application (MCA)',
       subtitle: 'Mumbai University',
-      period: '2022 - 2024',
+      period: '2023 - 2025',
       location: 'Mumbai, India',
       description: [
         'Specialized in Advanced Software Development and Machine Learning',
@@ -30,9 +30,9 @@ const EducationExperience: React.FC = () => {
     },
     {
       id: 'bsc',
-      title: 'Bachelor of Science (B.Sc.) in Computer Science',
+      title: 'Bachelor of Science (B.Sc.)',
       subtitle: 'Mithibai College of Arts, Science and Commerce',
-      period: '2019 - 2022',
+      period: '2020 - 2023',
       location: 'Mumbai, India',
       description: [
         'Graduated with First Class with Distinction ',
@@ -45,7 +45,7 @@ const EducationExperience: React.FC = () => {
       id: 'homeville',
       title: 'Developer Intern',
       subtitle: 'HomeVille Group',
-      period: 'Jun 2023 - Aug 2023',
+      period: 'Jan 2025 - June 2025',
       location: 'Mumbai, India',
       description: [
         'Led the CERSAI project for Singularity Creditworld using Java Spring Boot, ensuring scalability, security, and compliance.',
@@ -61,7 +61,7 @@ const EducationExperience: React.FC = () => {
       id: '360serve',
       title: 'Software Developer',
       subtitle: '360Serve',
-      period: 'Jan 2024 - Present',
+      period: 'Dec 2023 - Dec 2024',
       location: 'Mumbai, India',
       description: [
         'Full-stack development of enterprise applications using modern web technologies',
